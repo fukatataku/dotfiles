@@ -8,7 +8,7 @@ if [ `uname` = "Darwin" ]; then
   alias lla='ls -laG'
   export LSCOLORS='gxfxcxdxbxegedabagacad'
 
-elif [ `uname` = "Linux" ]; then
+elif [ `uname` = "Linux" -o `uname` = "CYGWIN_NT-6.1" ]; then
   # Linux
   alias ls='ls --color'
   alias la='ls -a --color'
