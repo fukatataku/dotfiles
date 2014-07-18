@@ -16,6 +16,10 @@ set hlsearch
 set virtualedit=all
 set backspace=indent,eol,start
 set wildmenu wildmode=list:full
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 
 " Auto file
 set nowritebackup
@@ -24,7 +28,7 @@ set noswapfile
 
 " Display
 set list
-set listchars=tab:>\ ,eol:$  
+set listchars=tab:»\ ,eol:↲
 set number 
 set colorcolumn=80
 set t_vb=
@@ -40,6 +44,10 @@ set matchpairs& matchpairs+=<:>
 inoremap jj <Esc>
 nnoremap j gj
 nnoremap k gk
+
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
+nnoremap Q <Nop>
 
 "===========
 " NeoBundle
@@ -61,7 +69,16 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
-NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Shougo/vimproc', {
+    \ 'build': {
+        \ 'windows' : 'make -f make_mingw32.make',
+        \ 'cygwin'  : 'make -f make_cygwin.mak',
+        \ 'mac'     : 'make -f make_mac.mak',
+        \ 'unix'    : 'make -f make_unix.mak',
+    \ }}
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
 NeoBundle 'itchyny/lightline.vim'
 
 call neobundle#end()
