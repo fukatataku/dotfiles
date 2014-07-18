@@ -20,6 +20,6 @@ fi
 alias vi='vim'
 
 # äePCå≈óLÇÃê›íË
-if [ -e ~/.my_bash_profile ]; then
+if [ -e ~/.bash_profile.local ]; then
   source ~/.my_bash_profile
 fi
