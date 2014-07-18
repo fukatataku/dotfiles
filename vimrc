@@ -1,6 +1,37 @@
 " Cursor position
 set ruler
 
+" Search
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+" Edit
+set virtualedit=all
+set backspace=indent,eol,start
+set wildmenu wildmode=list:full
+
+" Auto file
+set nowritebackup
+set nobackup
+set noswapfile
+
+" Display
+syntax on
+set background=dark
+set showmatch
+set matchpairs& matchpairs+=<:>
+set list
+set number 
+set colorcolumn=80
+set t_vb=
+set novisualbell
+
+" Macro
+inoremap jj <Esc>
+nnoremap j gj
+nnoremap k gk
 
 "===========
 " NeoBundle
