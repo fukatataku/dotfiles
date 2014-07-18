@@ -1,5 +1,7 @@
-" Encoding
+﻿" Encoding
 set encoding=utf-8
+set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
+scriptencoding utf-8
 
 " Cursor position
 set ruler
@@ -21,16 +23,18 @@ set nobackup
 set noswapfile
 
 " Display
-syntax on
-set background=dark
-set showmatch
-set matchpairs& matchpairs+=<:>
 set list
-set listchars=tab:>\  
+set listchars=tab:>\ ,eol:$  
 set number 
 set colorcolumn=80
 set t_vb=
 set novisualbell
+
+" Highlight
+syntax on
+set background=dark
+set showmatch
+set matchpairs& matchpairs+=<:>
 
 " Macro
 inoremap jj <Esc>
@@ -58,6 +62,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'itchyny/lightline.vim'
 
 call neobundle#end()
 
@@ -67,3 +72,9 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
+
+
+" For lightline.vim
+set laststatus=2
+let g:lightline = {'colorscheme' : 'wombat',}
+
