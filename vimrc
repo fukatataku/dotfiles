@@ -1,3 +1,6 @@
+" Encoding
+set encoding=utf-8
+
 " Cursor position
 set ruler
 
@@ -23,6 +26,7 @@ set background=dark
 set showmatch
 set matchpairs& matchpairs+=<:>
 set list
+set listchars=tab:>\  
 set number 
 set colorcolumn=80
 set t_vb=
