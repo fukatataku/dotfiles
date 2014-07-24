@@ -5,17 +5,6 @@ set encoding=utf-8
 set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
 scriptencoding utf-8
 
-"======
-" Font
-"======
-if has('win32')
-    echo 'Windows'
-elseif has('win32unix')
-    echo 'Cygwin'
-elseif has('mac')
-    echo 'Mac'
-endif
-
 " Cursor position
 set ruler
 
