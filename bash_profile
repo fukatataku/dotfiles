@@ -24,5 +24,5 @@ export TERM=xterm-256color
 
 # 各PC固有の設定
 if [ -e ~/.bash_profile.local ]; then
-  source ~/.my_bash_profile
+  source ~/.bash_profile.local
 fi
