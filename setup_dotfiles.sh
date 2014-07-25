@@ -12,6 +12,6 @@ ln -sf $HERE/bash_profile ~/.bash_profile
 ln -sf $HERE/init.el ~/.emacs.d/init.el
 ln -sf $HERE/inputrc ~/.inputrc
 
-if [ ! -e ~/.vim/bundle/neobundle.vimm ]; then
+if [ ! -e ~/.vim/bundle/neobundle.vim ]; then
     git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 fi
