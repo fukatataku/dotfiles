@@ -1,7 +1,5 @@
 if [ `uname` = "Darwin" ]; then
   # Mac
-  export PS1='$ '
-
   alias ls='ls -G'
   alias ll='ls -lG'
   alias la='ls -aG'
@@ -18,6 +16,7 @@ elif [ `uname` = "Linux" -o `uname` = "CYGWIN_NT-6.1" ]; then
 fi
 
 alias vi='vim'
+export PS1='$ '
 
 # For vim
 export TERM=xterm-256color
