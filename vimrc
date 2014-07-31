@@ -9,7 +9,7 @@ augroup END
 " Encoding
 "==========
 set encoding=utf-8
-set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
+set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp,default,latin
 scriptencoding utf-8
 
 " Search
