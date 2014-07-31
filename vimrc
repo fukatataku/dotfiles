@@ -19,7 +19,7 @@ set incsearch
 set hlsearch
 
 " Edit
-set virtualedit=all
+"set virtualedit=all
 set backspace=indent,eol,start
 set wildmenu wildmode=list:full
 set tabstop=4
@@ -164,20 +164,20 @@ endfunction
 "==============================================================================
 " jedi
 "==============================================================================
-"NeoBundleLazy 'davidhalter/jedi-vim', {
-    "\ "autoload": {
-    "\   "filetypes": ["python", "python3", "djangohtml"],
-    "\ },
-    "\ "build": {
-    "\   "cygwin": "pip install jedi",
-    "\   "mac": "pip install jedi",
-    "\   "unix": "pip install jedi",
-    "\ }}
-"let s:hooks = neobundle#get_hooks("jedi-vim")
-"function! s:hooks.on_source(bundle)
-  "let g:jedi#auto_vim_configuration = 0
-  "let g:jedi#popup_select_first = 0
-"endfunction
+NeoBundleLazy 'davidhalter/jedi-vim', {
+    \ "autoload": {
+    \   "filetypes": ["python", "python3", "djangohtml"],
+    \ },
+    \ "build": {
+    \   "cygwin": "pip install jedi",
+    \   "mac": "pip install jedi",
+    \   "unix": "pip install jedi",
+    \ }}
+let s:hooks = neobundle#get_hooks("jedi-vim")
+function! s:hooks.on_source(bundle)
+    let g:jedi#auto_vim_configuration = 0
+    let g:jedi#popup_select_first = 0
+endfunction
 
 call neobundle#end()
 filetype plugin indent on
