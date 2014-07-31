@@ -1,13 +1,13 @@
-"===================
+"==============================================================================
 " Release AutoGroup
-"===================
+"==============================================================================
 augroup MyAutoCmd
     autocmd!
 augroup END
 
-"==========
+"==============================================================================
 " Encoding
-"==========
+"==============================================================================
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp,default,latin
 scriptencoding utf-8
@@ -47,9 +47,9 @@ set background=dark
 set showmatch
 set matchpairs& matchpairs+=<:>
 
-"=============
+"==============================================================================
 " Key Mapping
-"=============
+"==============================================================================
 inoremap jj <Esc>
 nnoremap j gj
 nnoremap k gk
@@ -65,11 +65,19 @@ nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 nnoremap Q <Nop>
 
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
+nnoremap <S-Left> <C-w><
+nnoremap <S-Right> <C-w>>
+nnoremap <S-Up> <C-w>-
+nnoremap <S-Down> <C-w>+
 
-"===========
+"==============================================================================
 " NeoBundle
-"===========
+"==============================================================================
 if has('vim_starting')
   set nocompatible               " Be iMproved
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -80,23 +88,44 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
 
-"=========
+"==============================================================================
 " vimproc
-"=========
-"NeoBundle 'Shougo/vimproc', {
-    "\ 'build': {
-        "\ 'windows' : 'make -f make_mingw32.make',
-        "\ 'cygwin'  : 'make -f make_cygwin.mak',
-        "\ 'mac'     : 'make -f make_mac.mak',
-        "\ 'unix'    : 'make -f make_unix.mak',
-    "\ }}
+"==============================================================================
+NeoBundle 'Shougo/vimproc', {
+    \ 'build': {
+        \ 'windows' : 'make -f make_mingw32.make',
+        \ 'cygwin'  : 'make -f make_cygwin.mak',
+        \ 'mac'     : 'make -f make_mac.mak',
+        \ 'unix'    : 'make -f make_unix.mak',
+    \ }}
 
-"NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'Shougo/vimfiler'
+"==============================================================================
+" unite
+"==============================================================================
+NeoBundleLazy 'Shougo/unite.vim', {
+    \ 'autoload': {
+    \   'commands': ['Unite', 'UniteWithBufferDir']
+    \ }}
+nnoremap [unite] <Nop>
+nmap <Space>u [unite]
+nnoremap [unite]b :<C-u>Unite<Space>buffer<CR>
+nnoremap [unite]f :<C-u>Unite<Space>file<CR>
 
-"=============
+"==============================================================================
+" vimfiler
+"==============================================================================
+NeoBundleLazy 'Shougo/vimfiler', {
+    \ 'depends': ['Shougo/unite.vim'],
+    \ 'autoload': {
+    \   'commands': ['VimFilerTab', 'VimFiler', 'VimFilerExplorer'],
+    \   'mappings': ['<plug>(vimfiler_switch)'],
+    \   'explorer': 1,
+    \ }}
+nnoremap <Space>f :VimFilerExplorer<CR>
+
+"==============================================================================
 " neocomplete
-"=============
+"==============================================================================
 "if has('lua') && v:version >= 704
     "NeoBundleLazy 'Shougo/neocomplete.vim', {
         "\ 'autoload': {
@@ -112,9 +141,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 "NeoBundle 'Shougo/neosnippet.vim'
 
-"===========
+"==============================================================================
 " lightline
-"===========
+"==============================================================================
 NeoBundle 'itchyny/lightline.vim'
 let s:hooks = neobundle#get_hooks('lightline.vim')
 function! s:hooks.on_source(bundle)
@@ -132,9 +161,9 @@ endfunction
 "NeoBundle 'lambdalisue/vim-django-support'
 "NeoBundle 'jmcantrell/vim-virtualenv'
 
-"======
+"==============================================================================
 " jedi
-"======
+"==============================================================================
 "NeoBundleLazy 'davidhalter/jedi-vim', {
     "\ "autoload": {
     "\   "filetypes": ["python", "python3", "djangohtml"],
