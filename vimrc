@@ -39,7 +39,7 @@ set listchars=tab:»\ ,eol:↲
 set number 
 set colorcolumn=80
 set t_vb=
-set novisualbell
+set visualbell
 
 " Highlight
 syntax on
