@@ -15,3 +15,12 @@ ln -sf $HERE/inputrc ~/.inputrc
 if [ ! -e ~/.vim/bundle/neobundle.vim ]; then
     git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 fi
+
+# Vim設定の補足
+# neocomplete.vimを有効にするにはシステムが以下の条件を満たしている必要がある
+# ・luaがインストールされている
+#   $ yum install lua
+#   $ brew install lua
+#   $ apt-cyg install lua
+# ・vimのバージョンが7.3.885以上
+# ・vimがlua対応をしている

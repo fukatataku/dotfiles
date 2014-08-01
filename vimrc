@@ -26,6 +26,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set completeopt=menuone
 
 " Auto file
 set nowritebackup
@@ -124,20 +125,32 @@ NeoBundleLazy 'Shougo/vimfiler', {
 nnoremap <Space>f :VimFilerExplorer<CR>
 
 "==============================================================================
-" neocomplete
+" neocomplete/neocomplcache
 "==============================================================================
-"if has('lua') && v:version >= 704
-    "NeoBundleLazy 'Shougo/neocomplete.vim', {
-        "\ 'autoload': {
-        "\   'insert': 1,
-        "\ }}
-    "let g:neocomplete#enable_at_startup = 1
-    "let s:hooks = neobundle#get_hooks('neocomplete.vim')
-    "function! s:hooks.on_source(bundle)
-        "let g:acp_enableAtStartup = 0
-        "let g:neocomplete#enable_smart_case = 1
-    "endfunction
-"endif
+if has('lua') && v:version >= 704
+    NeoBundleLazy 'Shougo/neocomplete.vim', {
+        \ 'autoload': {
+        \   'insert': 1,
+        \ }}
+    let g:neocomplete#enable_at_startup = 1
+    let s:hooks = neobundle#get_hooks('neocomplete.vim')
+    function! s:hooks.on_source(bundle)
+        let g:acp_enableAtStartup = 0
+        let g:neocomplete#enable_smart_case = 1
+        "let g:neocomplete#force_omni_input_patterns = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+    endfunction
+else
+    NeoBundleLazy 'Shougo/neocomplcache', {
+        \ 'autoload': {
+        \   'insert': 1,
+        \ }}
+    let g:neocomplcache_enable_at_startup = 1
+    let s:hooks = neobundle#get_hooks('neocomplcache')
+    function! s:hooks.on_source(bundle)
+        let g:acp_enableAtStartup = 0
+        let g:neocomplcache_enable_smart_case = 1
+    endfunction
+endif
 
 "NeoBundle 'Shougo/neosnippet.vim'
 
@@ -175,8 +188,9 @@ NeoBundleLazy 'davidhalter/jedi-vim', {
     \ }}
 let s:hooks = neobundle#get_hooks("jedi-vim")
 function! s:hooks.on_source(bundle)
+    setlocal omnifunc=jedi#completions
+    let g:jedi#completions_enabled = 0
     let g:jedi#auto_vim_configuration = 0
-    let g:jedi#popup_select_first = 0
 endfunction
 
 call neobundle#end()
