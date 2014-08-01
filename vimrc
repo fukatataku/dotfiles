@@ -47,8 +47,8 @@ set cursorline
 set cursorcolumn
 hi clear CursorLine
 hi clear CursorColumn
-highlight CursorLine ctermbg=Blue
-highlight CursorColumn ctermbg=Blue
+highlight CursorLine ctermbg=8
+highlight CursorColumn ctermbg=8
 
 " Highlight
 syntax on
