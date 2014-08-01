@@ -38,7 +38,9 @@ set ruler
 set list
 set listchars=tab:»\ ,eol:↲
 set number 
-set colorcolumn=80
+if v:version >= 703
+    set colorcolumn=80
+endif
 set t_vb=
 set visualbell
 set cursorline
