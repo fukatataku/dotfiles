@@ -44,6 +44,11 @@ endif
 set t_vb=
 set visualbell
 set cursorline
+set cursorcolumn
+hi clear CursorLine
+hi clear CursorColumn
+highlight CursorLine ctermbg=Blue
+highlight CursorColumn ctermbg=Blue
 
 " Highlight
 syntax on
