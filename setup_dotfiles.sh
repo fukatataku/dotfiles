@@ -24,3 +24,4 @@ fi
 #   $ apt-cyg install lua
 # ・vimのバージョンが7.3.885以上
 # ・vimがlua対応をしている
+

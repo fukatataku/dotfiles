@@ -41,6 +41,7 @@ set number
 set colorcolumn=80
 set t_vb=
 set visualbell
+set cursorline
 
 " Highlight
 syntax on
@@ -168,11 +169,29 @@ endfunction
 "NeoBundle 'sjl/gundo.vim'
 "NeoBundle 'vim-scripts/TaskList.vim'
 
-"NeoBundle 'thinca/vim-quickrun'
 
-" Python
-"NeoBundle 'lambdalisue/vim-django-support'
-"NeoBundle 'jmcantrell/vim-virtualenv'
+"==============================================================================
+" QuickRun
+"==============================================================================
+NeoBundle 'thinca/vim-quickrun'
+let s:hooks = neobundle#get_hooks('vim-quickrun')
+function! s:hooks.on_source(bundle)
+    set splitbelow
+    set splitright
+    nnoremap <Space>r :QuickRun<CR>
+endfunction
+
+"==============================================================================
+" Python (virtualenv & django)
+"==============================================================================
+NeoBundleLazy 'lambdalisue/vim-django-support', {
+    \ 'autoload': {
+    \   'filetypes': ['python', 'python3', 'djangohtml']
+    \ }}
+NeoBundleLazy 'jmcantrell/vim-virtualenv', {
+    \ 'autoload': {
+    \   'filetypes': ['python', 'python3', 'djangohtml']
+    \ }}
 
 "==============================================================================
 " jedi
