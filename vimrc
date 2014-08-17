@@ -160,7 +160,13 @@ else
     endfunction
 endif
 
-"NeoBundle 'Shougo/neosnippet.vim'
+"==============================================================================
+" neosnippet
+"==============================================================================
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
 "==============================================================================
 " lightline
@@ -172,10 +178,18 @@ function! s:hooks.on_source(bundle)
     let g:lightline = {'colorscheme' : 'wombat',}
 endfunction
 
+"==============================================================================
+" indent-guides
+"==============================================================================
 "NeoBundle 'nathanaelkane/vim-indent-guides'
-"NeoBundle 'sjl/gundo.vim'
-"NeoBundle 'vim-scripts/TaskList.vim'
-
+"let s:hooks = neobundle#get_hooks("vim-indent-guides")
+"function! s:hooks.on_source(bundle)
+"    let g:indent_guides_guide_size = 1
+"    let g:indent_guides_auto_colors = 0
+"    highlight IndentGuidesOdd guibg=red ctermbg=3
+"    highlight IndentGuidesEven guibg=green ctermbg=4
+"    IndentGuidesEnable
+"endfunction
 
 "==============================================================================
 " QuickRun
