@@ -1,14 +1,21 @@
-#!/bin/bash
+﻿#!/bin/bash
 # -*- encoding:utf-8 -*-
 
 #HERE=$(readlink -f $(dirname $0))
 HERE=$(cd $(dirname $0);pwd)
 
+if [ `uname` = "MINGW32_NT-6.1" ]; then
+  # Windows
+  VIM_DIR = ~/vimfiles
+else
+  # Windows以外
+  VIM_DIR = ~/.vim
+fi
+
 mkdir -p ~/.vim/bundle
 mkdir -p ~/.emacs.d
 
-ln -sf $HERE/vimrc ~/.vim/vimrc
-ln -sf $HERE/bash_profile ~/.bash_profile
+ln -sf $HERE/vimrc ~/$VIM_DIR/vimrc
 ln -sf $HERE/bash_profile ~/.bashrc
 ln -sf $HERE/init.el ~/.emacs.d/init.el
 ln -sf $HERE/inputrc ~/.inputrc
