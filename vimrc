@@ -38,8 +38,8 @@ set noswapfile
 
 " Display
 set ruler
-set list
-set listchars=tab:≫\ ,eol:↵
+"set list
+"set listchars=tab:≫\ ,eol:↵
 set number 
 "set wrap
 if v:version >= 703
@@ -53,7 +53,7 @@ hi clear CursorLine
 hi clear CursorColumn
 highlight CursorLine ctermbg=8
 highlight CursorColumn ctermbg=8
-colorscheme evening
+"colorscheme evening
 
 " Highlight
 syntax on

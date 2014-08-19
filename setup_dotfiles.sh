@@ -21,7 +21,7 @@ case `uname` in
 		echo "Linux"
 		VIM_DIR=~/.vim
 		;;
-	darwin*)
+	Darwin*)
 		echo "Mac"
 		VIM_DIR=~/.vim
 		;;
