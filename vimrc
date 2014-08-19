@@ -35,8 +35,8 @@ set noswapfile
 
 " Display
 set ruler
-set list
-set listchars=tab:»\ ,eol:↲
+"set list
+"set listchars=tab:ﾂｻ\ ,eol:竊ｲ
 set number 
 if v:version >= 703
     set colorcolumn=80
