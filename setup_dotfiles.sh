@@ -1,4 +1,4 @@
-#!/bin/sh
+﻿#!/bin/sh
 # -*- encoding:utf-8 -*-
 
 #HERE=$(readlink -f $(dirname $0))
@@ -9,6 +9,7 @@ mkdir -p ~/.emacs.d
 
 ln -sf $HERE/vimrc ~/.vim/vimrc
 ln -sf $HERE/bash_profile ~/.bash_profile
+ln -sf $HERE/bash_profile ~/.bashrc
 ln -sf $HERE/init.el ~/.emacs.d/init.el
 ln -sf $HERE/inputrc ~/.inputrc
 
