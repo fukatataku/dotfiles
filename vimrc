@@ -27,6 +27,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set completeopt=menuone
+set autoindent
 
 " Auto file
 set nowritebackup
@@ -36,8 +37,10 @@ set noswapfile
 " Display
 set ruler
 "set list
-"set listchars=tab:ﾂｻ\ ,eol:竊ｲ
+set nolist
+"set listchars=tab:?ゑｽｻ\ ,eol:遶奇ｽｲ
 set number 
+"set wrap
 if v:version >= 703
     set colorcolumn=80
 endif
@@ -56,6 +59,20 @@ syntax on
 set background=dark
 set showmatch
 set matchpairs& matchpairs+=<:>
+
+" Printer
+if has('printer')
+  if has('win32')
+    set printfont=MS_Mincho:h12:cSHIFTJIS
+    "set printfont=MS_Gothic:h12:cSHIFTJIS
+  endif
+endif
+
+" other
+if filereadable($VIM . '/vimrc') && filereadable($VIM . '/ViMrC')
+  " tagsファイルの重複防止
+  set tags=./tags,tags
+endif
 
 "==============================================================================
 " Key Mapping
