@@ -4,24 +4,43 @@
 #HERE=$(readlink -f $(dirname $0))
 HERE=$(cd $(dirname $0);pwd)
 
-if [ `uname` = "MINGW32_NT-6.1" ]; then
-  # Windows
-  VIM_DIR = ~/vimfiles
-else
-  # Windows以外
-  VIM_DIR = ~/.vim
-fi
+case `uname` in
+	windows*)
+		echo "Windows"
+		VIM_DIR=~/vimfiles
+		;;
+	CYGWIN*)
+		echo "Cygwin"
+		VIM_DIR=~/.vim
+		;;
+	MINGW*)
+		echo "MinGW"
+		VIM_DIR=~/vimfiles
+		;;
+	Linux*)
+		echo "Linux"
+		VIM_DIR=~/.vim
+		;;
+	darwin*)
+		echo "Mac"
+		VIM_DIR=~/.vim
+		;;
+	*)
+		echo "unknown"
+		;;
+esac
 
-mkdir -p ~/.vim/bundle
+
+mkdir -p $VIM_DIR/bundle
 mkdir -p ~/.emacs.d
 
-ln -sf $HERE/vimrc ~/$VIM_DIR/vimrc
+ln -sf $HERE/vimrc $VIM_DIR/vimrc
 ln -sf $HERE/bash_profile ~/.bashrc
 ln -sf $HERE/init.el ~/.emacs.d/init.el
 ln -sf $HERE/inputrc ~/.inputrc
 
-if [ ! -e ~/.vim/bundle/neobundle.vim ]; then
-    git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+if [ ! -e $VIM_DIR/bundle/neobundle.vim ]; then
+    git clone https://github.com/Shougo/neobundle.vim $VIM_DIR/bundle/neobundle.vim
 fi
 
 # Vim設定の補足

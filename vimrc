@@ -89,10 +89,17 @@ nnoremap <S-Down> <C-w>+
 "==============================================================================
 if has('vim_starting')
   set nocompatible               " Be iMproved
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  let OSTYPE = system('uname')
+  if OSTYPE == "windows32\n"
+    let VIM_DIR = "~/vimfiles"
+    set runtimepath+=~/vimfiles/bundle/neobundle.vim
+  else
+    let VIM_DIR = "~/.vim"
+    set runtimepath+=~/.vim/bundle/neobundle.vim
+  endif
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+call neobundle#begin(expand(VIM_DIR . "/bundle/"))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
