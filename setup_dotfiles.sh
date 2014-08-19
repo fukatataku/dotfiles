@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 # -*- encoding:utf-8 -*-
 
 #HERE=$(readlink -f $(dirname $0))
