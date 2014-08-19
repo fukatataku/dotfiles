@@ -36,7 +36,7 @@ mkdir -p ~/.emacs.d
 
 ln -sf $HERE/vimrc $VIM_DIR/vimrc
 ln -sf $HERE/gvimrc $VIM_DIR/gvimrc
-ln -sf $HERE/bash_profile ~/.bashrc
+ln -sf $HERE/bashrc ~/.bashrc
 ln -sf $HERE/init.el ~/.emacs.d/init.el
 ln -sf $HERE/inputrc ~/.inputrc
 
