@@ -3,7 +3,7 @@
 "================
 " カラースキーム
 "================
-colorscheme torte
+colorscheme evening
 
 "==========
 " フォント
@@ -25,12 +25,11 @@ elseif has('xfontset')
   set guifontset=a14,r14,k14
 endif
 
-
 "============
 " ウィンドウ
 "============
-set columns=80
-set lines=25
+set columns=120
+set lines=80
 set cmdheight=2
 
 "========================

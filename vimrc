@@ -1,3 +1,5 @@
+" Vimの基本設定 GUI用の設定はgvimrc
+
 "==============================================================================
 " Release AutoGroup
 "==============================================================================
@@ -36,9 +38,8 @@ set noswapfile
 
 " Display
 set ruler
-"set list
-set nolist
-"set listchars=tab:?ゑｽｻ\ ,eol:遶奇ｽｲ
+set list
+set listchars=tab:≫\ ,eol:↵
 set number 
 "set wrap
 if v:version >= 703
@@ -52,7 +53,7 @@ hi clear CursorLine
 hi clear CursorColumn
 highlight CursorLine ctermbg=8
 highlight CursorColumn ctermbg=8
-colorscheme torte
+colorscheme evening
 
 " Highlight
 syntax on
