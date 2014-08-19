@@ -42,13 +42,14 @@ if v:version >= 703
     set colorcolumn=80
 endif
 set t_vb=
-set visualbell
+set novisualbell
 set cursorline
 set cursorcolumn
 hi clear CursorLine
 hi clear CursorColumn
 highlight CursorLine ctermbg=8
 highlight CursorColumn ctermbg=8
+colorscheme torte
 
 " Highlight
 syntax on
