@@ -40,7 +40,7 @@ set noswapfile
 set ruler
 "set list
 "set listchars=tab:≫\ ,eol:↵
-set number 
+set number
 "set wrap
 if v:version >= 703
     set colorcolumn=80
@@ -251,6 +251,31 @@ endfunction
 "    highlight IndentGuidesEven guibg=green ctermbg=4
 "    IndentGuidesEnable
 "endfunction
+
+"==============================================================================
+" Edit Assist
+"==============================================================================
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'vim-scripts/Align'
+NeoBundle 'vim-scripts/YankRing.vim'
+
+"==============================================================================
+" Display Assist
+"==============================================================================
+NeoBundle 'bronson/vim-trailing-whitespace'
+
+" visiblize wide space
+"function! ZenkakuSpace()
+    "highlight ZenkakuSpace cterm=underline ctermfg=Red guibg=darkgray
+"endfunction
+"if has('systax')
+    "augroup ZenkakuSpace
+        "autocmd!
+        "autocmd ColorScheme * call ZenkakuSpace()
+        "autocmd VimEnter,WinEnter,BufRead * let w:ml=matchadd('ZenkakuSpace', '　')
+    "augroup END
+    "call ZenkakuSpace()
+"endif
 
 "==============================================================================
 " QuickRun
