@@ -195,6 +195,19 @@ imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
 "==============================================================================
+" ColorScheme
+"==============================================================================
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'wOng/vim-hybrid'
+NeoBundle 'vim-scripts/twilight'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'vim-scripts/Wombat'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/rdark'
+
+"==============================================================================
 " lightline
 "==============================================================================
 NeoBundle 'itchyny/lightline.vim'
