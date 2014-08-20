@@ -143,8 +143,31 @@ NeoBundleLazy 'Shougo/unite.vim', {
     \ }}
 nnoremap [unite] <Nop>
 nmap <Space>u [unite]
+nnoremap [unite]f :<C-u>UniteWithBufferDir<Space>-buffer-name=files file<CR>
 nnoremap [unite]b :<C-u>Unite<Space>buffer<CR>
-nnoremap [unite]f :<C-u>Unite<Space>file<CR>
+nnoremap [unite]r :<C-u>Unite<Space>register<CR>
+nnoremap [unite]c :<C-u>Unite<Space>bookmark<CR>
+nnoremap [unite]t :<C-u>Unite<Space>tab<CR>
+nnoremap [unite]w :<C-u>Unite<Space>window<CR>
+nnoremap [unite]m :<C-u>Unite<Space>file_mru<CR>
+let s:hooks = neobundle#get_hooks('unite.vim')
+function! s:hooks.on_source(bundle)
+    let g:unite_source_bookmark_directory = '~/.unite/bookmark'
+    "let g:unite_enable_start_insert = 1
+    call unite#custom_default_action("source/bookmark/directory", "vimfiler")
+    call unite#custom_default_action("directory", "vimfiler")
+    call unite#custom_default_action("directory_mru", "vimfiler")
+    NeoBundle 'Shougo/neomru.vim'
+endfunction
+
+"==============================================================================
+" neomru
+"==============================================================================
+"NeoBundleLazy 'Shougo/neomru.vim', {
+    "\ 'depends': ['Shougo/unite.vim'],
+    "\ 'autoload': {
+    "\   'commands': ['Unite', 'UniteWithBufferDir']
+    "\ }}
 
 "==============================================================================
 " vimfiler
@@ -152,11 +175,13 @@ nnoremap [unite]f :<C-u>Unite<Space>file<CR>
 NeoBundleLazy 'Shougo/vimfiler', {
     \ 'depends': ['Shougo/unite.vim'],
     \ 'autoload': {
-    \   'commands': ['VimFilerTab', 'VimFiler', 'VimFilerExplorer'],
+    \   'commands': ['VimFiler', 'VimFilerExplorer', 'VimFilerDouble'],
     \   'mappings': ['<plug>(vimfiler_switch)'],
-    \   'explorer': 1,
+    \   'explorer': 1
     \ }}
-nnoremap <Space>f :VimFilerExplorer<CR>
+"nnoremap <Space>f :VimFilerExplorer<CR>
+nnoremap <Space>f :VimFiler<CR>
+nnoremap <Space>d :VimFilerDouble<CR>
 
 "==============================================================================
 " neocomplete/neocomplcache
