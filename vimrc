@@ -152,7 +152,7 @@ nnoremap [unite]w :<C-u>Unite<Space>window<CR>
 nnoremap [unite]m :<C-u>Unite<Space>file_mru<CR>
 let s:hooks = neobundle#get_hooks('unite.vim')
 function! s:hooks.on_source(bundle)
-    let g:unite_source_bookmark_directory = '~/.unite/bookmark'
+    "let g:unite_source_bookmark_directory = '~/.unite/bookmark'
     "let g:unite_enable_start_insert = 1
     call unite#custom_default_action("source/bookmark/directory", "vimfiler")
     call unite#custom_default_action("directory", "vimfiler")
