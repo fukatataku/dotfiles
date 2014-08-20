@@ -10,9 +10,9 @@ augroup END
 "==============================================================================
 " Encoding
 "==============================================================================
+scriptencoding utf-8
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp,default,latin
-scriptencoding utf-8
 
 " Search
 set ignorecase
@@ -162,13 +162,9 @@ function! s:hooks.on_source(bundle)
 endfunction
 
 "==============================================================================
-" neomru
+" vimshell
 "==============================================================================
-"NeoBundleLazy 'Shougo/neomru.vim', {
-    "\ 'depends': ['Shougo/unite.vim'],
-    "\ 'autoload': {
-    "\   'commands': ['Unite', 'UniteWithBufferDir']
-    "\ }}
+NeoBundle 'Shougo/vimshell.vim'
 
 "==============================================================================
 " vimfiler
