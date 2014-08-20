@@ -11,8 +11,17 @@ colorscheme jellybeans
 "==============================================================================
 if has('win32')
   " Windows用
-  set guifont=MS_Gothic:h12:cSHIFTJIS
+  "set guifont=MS_Gothic:h12:cSHIFTJIS
   "set guifont=MS_Mincho:h12:cSHIFTJIS
+  " Osakaフォントを使う
+  " WindowsでOsakaフォントを使うには以下を参考にする
+  " http://osaka.is.land.to/
+  " http://osaka.is.land.to/files/Osaka.zip
+  " ↑をダウンロードしてインストールすればOK
+  set encoding=cp932
+  set guifont=Osaka－等幅:h12
+  set ambiwidth=auto
+  set encoding=utf8
   " 行間隔の設定
   set linespace=1
   " 一部のUCS文字の幅を自動計測して決める
