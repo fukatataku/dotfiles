@@ -220,7 +220,7 @@ smap <C-k> <Plug>(neosnippet_expand_or_jump)
 " ColorScheme
 "==============================================================================
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'wOng/vim-hybrid'
+NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'vim-scripts/twilight'
 NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'jpo/vim-railscasts-theme'
