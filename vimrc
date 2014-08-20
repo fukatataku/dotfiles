@@ -44,6 +44,7 @@ set number
 "set wrap
 if v:version >= 703
     set colorcolumn=80
+    autocmd MyAutoCmd ColorScheme * hi ColorColumn guibg=Red ctermbg=7
 endif
 set t_vb=
 set novisualbell
