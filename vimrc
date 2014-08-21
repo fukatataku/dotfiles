@@ -172,13 +172,22 @@ NeoBundle 'Shougo/vimshell.vim'
 NeoBundleLazy 'Shougo/vimfiler', {
     \ 'depends': ['Shougo/unite.vim'],
     \ 'autoload': {
-    \   'commands': ['VimFiler', 'VimFilerExplorer', 'VimFilerDouble'],
+    \   'commands': ['VimFiler', 'VimFilerDouble'],
     \   'mappings': ['<plug>(vimfiler_switch)'],
     \   'explorer': 1
     \ }}
-"nnoremap <Space>f :VimFilerExplorer<CR>
 nnoremap <Space>f :VimFiler<CR>
 nnoremap <Space>d :VimFilerDouble<CR>
+let s:hooks = neobundle#get_hooks('vimfiler')
+function! s:hooks.on_source(bundle)
+    let g:vimfiler_as_default_explorer = 1
+    let g:vimfiler_enable_auto_cd = 1
+    autocmd MyAutoCmd FileType vimfiler call s:vimfiler_settings()
+    function! s:vimfiler_settings()
+        nmap <buffer> R <Plug>(vimfiler_redraw_screen)
+        nmap <buffer> <C-l> <C-w>l
+    endfunction
+endfunction
 
 "==============================================================================
 " neocomplete/neocomplcache
@@ -263,19 +272,6 @@ NeoBundle 'vim-scripts/YankRing.vim'
 " Display Assist
 "==============================================================================
 NeoBundle 'bronson/vim-trailing-whitespace'
-
-" visiblize wide space
-"function! ZenkakuSpace()
-    "highlight ZenkakuSpace cterm=underline ctermfg=Red guibg=darkgray
-"endfunction
-"if has('systax')
-    "augroup ZenkakuSpace
-        "autocmd!
-        "autocmd ColorScheme * call ZenkakuSpace()
-        "autocmd VimEnter,WinEnter,BufRead * let w:ml=matchadd('ZenkakuSpace', '　')
-    "augroup END
-    "call ZenkakuSpace()
-"endif
 
 "==============================================================================
 " QuickRun
