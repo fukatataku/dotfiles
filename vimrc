@@ -15,90 +15,24 @@ set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp,default,latin
 
 "==============================================================================
-" Cursor
+" Edit Settings
 "==============================================================================
-" 端末が制御シーケンスに対応している必要がある
-" Teratermの場合は以下の設定が必要
-" 設定 > その他の設定 > 制御シーケンス > カーソル形状/点滅変更制御シーケンス
-" Macの場合、デフォルトのターミナルは対応していないので、iTerm2を使う
-let &t_SI .= "\e[6 q"
-let &t_EI .= "\e[2 q"
+set backspace=indent,eol,start      " Backspaceで何でも削除
+set wildmenu wildmode=list:full     " コマンドライン補完強化
+set completeopt=menuone             " 補完時の動作／表示
+set autoindent                      " 自動インデント
 
-" Search
-set ignorecase
-set smartcase
-set incsearch
-set hlsearch
-
-" Edit
-"set virtualedit=all
-set backspace=indent,eol,start
-set wildmenu wildmode=list:full
+"===================
+" Tab Settings
+"===================
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set completeopt=menuone
-set autoindent
 
-" Auto file
-set nowritebackup
-set nobackup
-set noswapfile
-
-" Display
-set ruler
-"set list
-"set listchars=tab:≫\ ,eol:↵
-set number
-"set wrap
-if v:version >= 703
-    set colorcolumn=80
-    autocmd MyAutoCmd ColorScheme * hi ColorColumn guibg=Red ctermbg=1
-endif
-set t_vb=
-set novisualbell
-set cursorline
-set cursorcolumn
-hi clear CursorLine
-hi clear CursorColumn
-highlight CursorLine ctermbg=8
-highlight CursorColumn ctermbg=8
-"colorscheme evening
-
-" Highlight
-syntax on
-set background=dark
-set showmatch
-set matchpairs& matchpairs+=<:>
-function! HiSpace()
-    hi EndSpace cterm=underline ctermfg=Red gui=underline guifg=Red
-    hi WideSpace cterm=underline ctermfg=Red gui=underline guifg=Red
-endfunction
-augroup MyAutoCmd
-    au BufWinEnter,WinEnter * let w:m1 = matchadd("EndSpace", "\\s\\+$")
-    au BufWinEnter,WinEnter * let w:m2 = matchadd("WideSpace", '\%u3000')
-    au ColorScheme * call HiSpace()
-augroup END
-call HiSpace()
-
-" Printer
-if has('printer')
-  if has('win32')
-    set printfont=MS_Mincho:h12:cSHIFTJIS
-    "set printfont=MS_Gothic:h12:cSHIFTJIS
-  endif
-endif
-
-" other
-if filereadable($VIM . '/vimrc') && filereadable($VIM . '/ViMrC')
-  " tagsファイルの重複防止
-  set tags=./tags,tags
-endif
-
-"==============================================================================
+"===================
 " Key Mapping
-"==============================================================================
+"===================
 inoremap <C-@> <Esc>
 nnoremap j gj
 nnoremap k gk
@@ -125,6 +59,97 @@ nnoremap <S-Up> <C-w>-
 nnoremap <S-Down> <C-w>+
 
 "==============================================================================
+" Display Settings
+"==============================================================================
+set ruler
+set number
+"set wrap
+"set list
+"set listchars=tab:≫\ ,eol:↵
+set t_vb=
+set novisualbell
+
+"===================
+" Cursor
+"===================
+" 端末が制御シーケンスに対応している必要がある
+" Teratermの場合は以下の設定が必要
+" 設定 > その他の設定 > 制御シーケンス > カーソル形状/点滅変更制御シーケンス
+" Macの場合、デフォルトのターミナルは対応していないので、iTerm2を使う
+let &t_SI .= "\e[6 q"
+let &t_EI .= "\e[2 q"
+
+"===================
+" Search Settings
+"===================
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+"===================
+" Highlight
+"===================
+syntax on
+set background=dark
+set cursorline
+set cursorcolumn
+hi clear CursorLine
+hi clear CursorColumn
+highlight CursorLine ctermbg=8
+highlight CursorColumn ctermbg=8
+
+set showmatch
+set matchpairs& matchpairs+=<:>
+
+" 80桁目をハイライト
+if v:version >= 703
+    set colorcolumn=80
+    autocmd MyAutoCmd ColorScheme * hi ColorColumn guibg=Red ctermbg=1
+endif
+
+" 行末のスペースと全角スペースをハイライト
+function! HiSpace()
+    hi EndSpace cterm=underline ctermfg=Red gui=underline guifg=Red
+    hi WideSpace cterm=underline ctermfg=Red gui=underline guifg=Red
+endfunction
+augroup MyAutoCmd
+    au BufWinEnter,WinEnter * let w:m1 = matchadd("EndSpace", "\\s\\+$")
+    au BufWinEnter,WinEnter * let w:m2 = matchadd("WideSpace", '\%u3000')
+    au ColorScheme * call HiSpace()
+augroup END
+call HiSpace()
+
+"==============================================================================
+" Etc Settings
+"==============================================================================
+
+"===================
+" Auto file
+"===================
+set nowritebackup
+set nobackup
+set noswapfile
+
+"===================
+" Printer
+"===================
+if has('printer')
+  if has('win32')
+    set printfont=MS_Mincho:h12:cSHIFTJIS
+    "set printfont=MS_Gothic:h12:cSHIFTJIS
+  endif
+endif
+
+"===================
+" Tag jump settigns
+"===================
+if filereadable($VIM . '/vimrc') && filereadable($VIM . '/ViMrC')
+  " tagsファイルの重複防止
+  set tags=./tags,tags
+endif
+
+"==============================================================================
 " NeoBundle
 "==============================================================================
 if has('vim_starting')
@@ -143,10 +168,12 @@ call neobundle#begin(expand(VIM_DIR . "/bundle/"))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
-
 "==============================================================================
+" Basic Plugin
+"==============================================================================
+"===================
 " vimproc
-"==============================================================================
+"===================
 NeoBundle 'Shougo/vimproc', {
     \ 'build': {
         \ 'windows' : 'make -f make_mingw32.make',
@@ -155,9 +182,9 @@ NeoBundle 'Shougo/vimproc', {
         \ 'unix'    : 'make -f make_unix.mak',
     \ }}
 
-"==============================================================================
+"===================
 " unite
-"==============================================================================
+"===================
 NeoBundleLazy 'Shougo/unite.vim', {
     \ 'autoload': {
     \   'commands': ['Unite', 'UniteWithBufferDir']
@@ -181,14 +208,14 @@ function! s:hooks.on_source(bundle)
     NeoBundle 'Shougo/neomru.vim'
 endfunction
 
-"==============================================================================
+"===================
 " vimshell
-"==============================================================================
+"===================
 NeoBundle 'Shougo/vimshell.vim'
 
-"==============================================================================
+"===================
 " vimfiler
-"==============================================================================
+"===================
 NeoBundleLazy 'Shougo/vimfiler', {
     \ 'depends': ['Shougo/unite.vim'],
     \ 'autoload': {
@@ -210,8 +237,15 @@ function! s:hooks.on_source(bundle)
 endfunction
 
 "==============================================================================
-" neocomplete/neocomplcache
+" Edit Assist Plugin
 "==============================================================================
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'vim-scripts/Align'
+NeoBundle 'vim-scripts/YankRing.vim'
+
+"===================
+" neocomplete
+"===================
 if has('lua') && v:version >= 704
     NeoBundleLazy 'Shougo/neocomplete.vim', {
         \ 'autoload': {
@@ -237,17 +271,21 @@ else
     endfunction
 endif
 
-"==============================================================================
+"===================
 " neosnippet
-"==============================================================================
+"===================
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
 "==============================================================================
-" ColorScheme
+" Display Assist Plugin
 "==============================================================================
+
+"===================
+" ColorScheme
+"===================
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'vim-scripts/twilight'
@@ -258,9 +296,9 @@ NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/rdark'
 
-"==============================================================================
+"===================
 " lightline
-"==============================================================================
+"===================
 NeoBundle 'itchyny/lightline.vim'
 let s:hooks = neobundle#get_hooks('lightline.vim')
 function! s:hooks.on_source(bundle)
@@ -269,15 +307,11 @@ function! s:hooks.on_source(bundle)
 endfunction
 
 "==============================================================================
-" Edit Assist
+" General Programming Assist Plugin
 "==============================================================================
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'vim-scripts/Align'
-NeoBundle 'vim-scripts/YankRing.vim'
-
-"==============================================================================
+"===================
 " QuickRun
-"==============================================================================
+"===================
 NeoBundle 'thinca/vim-quickrun'
 let s:hooks = neobundle#get_hooks('vim-quickrun')
 function! s:hooks.on_source(bundle)
@@ -290,7 +324,7 @@ function! s:hooks.on_source(bundle)
 endfunction
 
 "==============================================================================
-" Python (virtualenv & django)
+" Python Assist Plugin
 "==============================================================================
 NeoBundleLazy 'lambdalisue/vim-django-support', {
     \ 'autoload': {
@@ -301,9 +335,9 @@ NeoBundleLazy 'jmcantrell/vim-virtualenv', {
     \   'filetypes': ['python', 'python3', 'djangohtml']
     \ }}
 
-"==============================================================================
+"===================
 " jedi
-"==============================================================================
+"===================
 NeoBundleLazy 'davidhalter/jedi-vim', {
     \ "autoload": {
     \   "filetypes": ["python", "python3", "djangohtml"],
@@ -320,6 +354,9 @@ function! s:hooks.on_source(bundle)
     let g:jedi#auto_vim_configuration = 0
 endfunction
 
+"==============================================================================
+" NeoBundle END
+"==============================================================================
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
