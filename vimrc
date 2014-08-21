@@ -71,6 +71,16 @@ syntax on
 set background=dark
 set showmatch
 set matchpairs& matchpairs+=<:>
+function! HiSpace()
+    hi EndSpace cterm=underline ctermfg=Red gui=underline guifg=Red
+    hi WideSpace cterm=underline ctermfg=Red gui=underline guifg=Red
+endfunction
+augroup MyAutoCmd
+    au BufWinEnter,WinEnter * let w:m1 = matchadd("EndSpace", "\\s\\+$")
+    au BufWinEnter,WinEnter * let w:m2 = matchadd("WideSpace", '\%u3000')
+    au ColorScheme * call HiSpace()
+augroup END
+call HiSpace()
 
 " Printer
 if has('printer')
@@ -259,29 +269,11 @@ function! s:hooks.on_source(bundle)
 endfunction
 
 "==============================================================================
-" indent-guides
-"==============================================================================
-"NeoBundle 'nathanaelkane/vim-indent-guides'
-"let s:hooks = neobundle#get_hooks("vim-indent-guides")
-"function! s:hooks.on_source(bundle)
-"    let g:indent_guides_guide_size = 1
-"    let g:indent_guides_auto_colors = 0
-"    highlight IndentGuidesOdd guibg=red ctermbg=3
-"    highlight IndentGuidesEven guibg=green ctermbg=4
-"    IndentGuidesEnable
-"endfunction
-
-"==============================================================================
 " Edit Assist
 "==============================================================================
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/YankRing.vim'
-
-"==============================================================================
-" Display Assist
-"==============================================================================
-NeoBundle 'bronson/vim-trailing-whitespace'
 
 "==============================================================================
 " QuickRun
