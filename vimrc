@@ -14,6 +14,16 @@ scriptencoding utf-8
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp,default,latin
 
+"==============================================================================
+" Cursor
+"==============================================================================
+" 端末が制御シーケンスに対応している必要がある
+" Teratermの場合は以下の設定が必要
+" 設定 > その他の設定 > 制御シーケンス > カーソル形状/点滅変更制御シーケンス
+" Macの場合、デフォルトのターミナルは対応していないので、iTerm2を使う
+let &t_SI .= "\e[6 q"
+let &t_EI .= "\e[2 q"
+
 " Search
 set ignorecase
 set smartcase
