@@ -24,7 +24,7 @@ set guicursor=n-v-ve-o-c-sm:block-Cursor/lCursor-blinkon0
 set guicursor+=i-r-ci-cr:ver25-Cursor-blinkon0
 function! SetCursorColor()
     if has('multi_byte_ime')
-        highlight Cursor guifg=NONE guibg=White
+        highlight Cursor guifg=NONE guibg=#404040
         highlight CursorIM guifg=NONE guibg=Purple
     endif
 endfunction
