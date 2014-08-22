@@ -1,4 +1,5 @@
 " Vimの基本設定 GUI用の設定はgvimrc
+scriptencoding utf-8
 
 "==============================================================================
 " Release AutoGroup
@@ -10,8 +11,8 @@ augroup END
 "==============================================================================
 " Encoding
 "==============================================================================
-scriptencoding utf-8
 set encoding=utf-8
+set fileencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp,default,latin
 
 "==============================================================================
@@ -114,7 +115,7 @@ function! HiSpace()
     hi WideSpace cterm=underline ctermfg=Red gui=underline guifg=Red
 endfunction
 augroup MyAutoCmd
-    au BufWinEnter,WinEnter * let w:m1 = matchadd("EndSpace", "\\s\\+$")
+    au BufWinEnter,WinEnter * let w:m1 = matchadd("EndSpace", '\s\+$')
     au BufWinEnter,WinEnter * let w:m2 = matchadd("WideSpace", '\%u3000')
     au ColorScheme * call HiSpace()
 augroup END

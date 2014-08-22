@@ -1,5 +1,12 @@
-" -*- encoding:utf-8 -*-
 " GUI環境用の設定
+scriptencoding utf-8
+
+"==============================================================================
+" Release AutoGroup
+"==============================================================================
+augroup MyAutoCmd_G
+    autocmd!
+augroup END
 
 "==============================================================================
 " Display Settings
@@ -15,6 +22,14 @@ colorscheme jellybeans
 "===================
 set guicursor=n-v-ve-o-c-sm:block-Cursor/lCursor-blinkon0
 set guicursor+=i-r-ci-cr:ver25-Cursor-blinkon0
+function! SetCursorColor()
+    if has('multi_byte_ime')
+        highlight Cursor guifg=NONE guibg=White
+        highlight CursorIM guifg=NONE guibg=Purple
+    endif
+endfunction
+au MyAutoCmd_G ColorScheme * call SetCursorColor()
+call SetCursorColor()
 
 "===================
 " Font Settings
