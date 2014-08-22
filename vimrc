@@ -1,6 +1,8 @@
 " Vimの基本設定 GUI用の設定はgvimrc
 scriptencoding utf-8
 
+let OSTYPE = system('uname')
+
 "==============================================================================
 " Release AutoGroup
 "==============================================================================
@@ -155,7 +157,6 @@ endif
 "==============================================================================
 if has('vim_starting')
   set nocompatible               " Be iMproved
-  let OSTYPE = system('uname')
   if OSTYPE == "windows32\n"
     let VIM_DIR = "~/vimfiles"
     set runtimepath+=~/vimfiles/bundle/neobundle.vim
@@ -227,8 +228,28 @@ NeoBundleLazy 'Shougo/vimfiler', {
     \   'mappings': ['<plug>(vimfiler_switch)'],
     \   'explorer': 1
     \ }}
-nnoremap <Space>f :VimFiler<CR>
-nnoremap <Space>d :VimFilerDouble<CR>
+function! OpenVimFiler(mode)
+    " Windowsの場合はVimFilerを開く前に内部エンコーディングをcp932に変更する
+    " UTF-8のままだとマルチバイト文字を含むパスが扱えない
+    if g:OSTYPE == "windows32\n" || g:OSTYPE == "MINGW32_NT-6.1\n"
+        set encoding=cp932
+    endif
+    if a:mode == "single"
+        VimFiler
+    elseif a:mode == "double"
+        VimFilerDouble
+    endif
+endfunction
+function! CloseVimFiler()
+    " Windowsの場合はVimFilerを閉じる前に内部エンコーディングをUTF-8に戻す
+    if g:OSTYPE == "windows32\n" || g:OSTYPE == "MINGW32_NT-6.1\n"
+        set encoding=utf-8
+    endif
+    execute "normal \<Plug>(vimfiler_exit)"
+endfunction
+
+nnoremap <Space>f :<C-u>call OpenVimFiler("single")<CR>
+nnoremap <Space>d :<C-u>call OpenVimFiler("double")<CR>
 let s:hooks = neobundle#get_hooks('vimfiler')
 function! s:hooks.on_source(bundle)
     let g:vimfiler_as_default_explorer = 1
@@ -237,6 +258,8 @@ function! s:hooks.on_source(bundle)
     function! s:vimfiler_settings()
         nmap <buffer> R <Plug>(vimfiler_redraw_screen)
         nmap <buffer> <C-l> <C-w>l
+        nmap <buffer> Q :call CloseVimFiler()<CR>
+        nmap <buffer> q :call CloseVimFiler()<CR>
     endfunction
 endfunction
 
