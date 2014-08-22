@@ -158,6 +158,9 @@ if has('vim_starting')
   if OSTYPE == "windows32\n"
     let VIM_DIR = "~/vimfiles"
     set runtimepath+=~/vimfiles/bundle/neobundle.vim
+  elseif OSTYPE == "MINGW32_NT-6.1\n"
+    let VIM_DIR = "~/vimfiles"
+    set runtimepath+=~/vimfiles/bundle/neobundle.vim
   else
     let VIM_DIR = "~/.vim"
     set runtimepath+=~/.vim/bundle/neobundle.vim
