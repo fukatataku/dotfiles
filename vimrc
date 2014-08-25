@@ -122,7 +122,11 @@ function! HiSpace()
 endfunction
 augroup MyAutoCmd
     au BufWinEnter,WinEnter * let w:m1 = matchadd("EndSpace", '\s\+$')
-    au BufWinEnter,WinEnter * let w:m2 = matchadd("WideSpace", '\%u3000')
+    if OSTYPE == "windows32\n" || OSTYPE == "MINGW32_NT-6.1\n"
+        au BufWinEnter,WinEnter * let w:m2 = matchadd("WideSpace", '　')
+    else
+        au BufWinEnter,WinEnter * let w:m2 = matchadd("WideSpace", '\%u3000')
+    endif
     au ColorScheme * call HiSpace()
 augroup END
 call HiSpace()
