@@ -355,8 +355,10 @@ NeoBundle 'thinca/vim-quickrun'
 let s:hooks = neobundle#get_hooks('vim-quickrun')
 function! s:hooks.on_source(bundle)
     "let g:quickrun_config = {
-        "\ '*': {'runner': 'remote/vimproc'},
-        "\ }
+    "    \ '*': {'runner': 'vimproc',
+    "    \       'hook/output_encode': 1,
+    "    \       'hook/output_encode/encoding': 'cp932'},
+    "    \ }
     set splitbelow
     set splitright
     nnoremap <Space>r :QuickRun<CR>
