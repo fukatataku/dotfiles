@@ -258,8 +258,10 @@ function! s:hooks.on_source(bundle)
     function! s:vimfiler_settings()
         nmap <buffer> R <Plug>(vimfiler_redraw_screen)
         nmap <buffer> <C-l> <C-w>l
-        nmap <buffer> Q :call CloseVimFiler()<CR>
-        nmap <buffer> q :call CloseVimFiler()<CR>
+        "nmap <buffer> Q :call CloseVimFiler()<CR>
+        "nmap <buffer> q :call CloseVimFiler()<CR>
+        nmap <buffer> Q q
+        autocmd MyAutoCmd BufLeave <buffer> :call CloseVimFiler()
     endfunction
 endfunction
 
