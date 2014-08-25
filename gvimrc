@@ -42,10 +42,8 @@ if has('win32')
   " http://osaka.is.land.to/
   " http://osaka.is.land.to/files/Osaka.zip
   " ↑をダウンロードしてインストールすればOK
-  set encoding=cp932
   set guifont=Osaka－等幅:h12
   set ambiwidth=auto
-  set encoding=utf-8
   set linespace=1
   if has('kaoriya')
     set ambiwidth=auto

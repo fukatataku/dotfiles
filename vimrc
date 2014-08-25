@@ -13,7 +13,11 @@ augroup END
 "==============================================================================
 " Encoding
 "==============================================================================
-set encoding=utf-8
+if OSTYPE == "windows32\n" || OSTYPE == "MINGW32_NT-6.1\n"
+    set encoding=cp932
+else
+    set encoding=utf-8
+endif
 set fileencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp,default,latin
 
@@ -68,7 +72,7 @@ set ruler
 set number
 "set wrap
 "set list
-"set listchars=tab:≫\ ,eol:↵
+"set listchars=tab:≫\ ,eol:?
 set t_vb=
 set novisualbell
 
@@ -228,28 +232,30 @@ NeoBundleLazy 'Shougo/vimfiler', {
     \   'mappings': ['<plug>(vimfiler_switch)'],
     \   'explorer': 1
     \ }}
-function! OpenVimFiler(mode)
+"function! OpenVimFiler(mode)
     " Windowsの場合はVimFilerを開く前に内部エンコーディングをcp932に変更する
     " UTF-8のままだとマルチバイト文字を含むパスが扱えない
-    if g:OSTYPE == "windows32\n" || g:OSTYPE == "MINGW32_NT-6.1\n"
-        set encoding=cp932
-    endif
-    if a:mode == "single"
-        VimFiler
-    elseif a:mode == "double"
-        VimFilerDouble
-    endif
-endfunction
-function! CloseVimFiler()
+    "if g:OSTYPE == "windows32\n" || g:OSTYPE == "MINGW32_NT-6.1\n"
+        "set encoding=cp932
+    "endif
+    "if a:mode == "single"
+        "VimFiler
+    "elseif a:mode == "double"
+        "VimFilerDouble
+    "endif
+"endfunction
+"function! CloseVimFiler()
     " Windowsの場合はVimFilerを閉じる前に内部エンコーディングをUTF-8に戻す
-    if g:OSTYPE == "windows32\n" || g:OSTYPE == "MINGW32_NT-6.1\n"
-        set encoding=utf-8
-    endif
-    execute "normal \<Plug>(vimfiler_exit)"
-endfunction
+    "if g:OSTYPE == "windows32\n" || g:OSTYPE == "MINGW32_NT-6.1\n"
+        "set encoding=utf-8
+    "endif
+    "execute "normal \<Plug>(vimfiler_exit)"
+"endfunction
 
-nnoremap <Space>f :<C-u>call OpenVimFiler("single")<CR>
-nnoremap <Space>d :<C-u>call OpenVimFiler("double")<CR>
+"nnoremap <Space>f :<C-u>call OpenVimFiler("single")<CR>
+"nnoremap <Space>d :<C-u>call OpenVimFiler("double")<CR>
+nnoremap <Space>f :<C-u>VimFiler<CR>
+nnoremap <Space>d :<C-u>VimFilerDouble<CR>
 let s:hooks = neobundle#get_hooks('vimfiler')
 function! s:hooks.on_source(bundle)
     let g:vimfiler_as_default_explorer = 1
@@ -260,8 +266,8 @@ function! s:hooks.on_source(bundle)
         nmap <buffer> <C-l> <C-w>l
         "nmap <buffer> Q :call CloseVimFiler()<CR>
         "nmap <buffer> q :call CloseVimFiler()<CR>
-        nmap <buffer> Q q
-        autocmd MyAutoCmd BufLeave <buffer> :call CloseVimFiler()
+        "nmap <buffer> Q q
+        "autocmd MyAutoCmd BufLeave <buffer> :call CloseVimFiler()
     endfunction
 endfunction
 
