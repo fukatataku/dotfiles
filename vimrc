@@ -1,8 +1,6 @@
 " Vimの基本設定 GUI用の設定はgvimrc
 scriptencoding utf-8
 
-let OSTYPE = system('uname')
-
 "==============================================================================
 " Release AutoGroup
 "==============================================================================
@@ -13,7 +11,7 @@ augroup END
 "==============================================================================
 " Encoding
 "==============================================================================
-if OSTYPE == "windows32\n" || OSTYPE == "MINGW32_NT-6.1\n"
+if has('win32') || has('win64')
     set encoding=cp932
 else
     set encoding=utf-8
@@ -122,7 +120,7 @@ function! HiSpace()
 endfunction
 augroup MyAutoCmd
     au BufWinEnter,WinEnter * let w:m1 = matchadd("EndSpace", '\s\+$')
-    if OSTYPE == "windows32\n" || OSTYPE == "MINGW32_NT-6.1\n"
+    if has('win32') || has('win64')
         au BufWinEnter,WinEnter * let w:m2 = matchadd("WideSpace", '　')
     else
         au BufWinEnter,WinEnter * let w:m2 = matchadd("WideSpace", '\%u3000')
@@ -164,17 +162,14 @@ endif
 " NeoBundle
 "==============================================================================
 if has('vim_starting')
-  set nocompatible               " Be iMproved
-  if OSTYPE == "windows32\n"
-    let VIM_DIR = "~/vimfiles"
-    set runtimepath+=~/vimfiles/bundle/neobundle.vim
-  elseif OSTYPE == "MINGW32_NT-6.1\n"
-    let VIM_DIR = "~/vimfiles"
-    set runtimepath+=~/vimfiles/bundle/neobundle.vim
-  else
-    let VIM_DIR = "~/.vim"
-    set runtimepath+=~/.vim/bundle/neobundle.vim
-  endif
+    set nocompatible               " Be iMproved
+    if has('win32') || has('win64')
+        let VIM_DIR = "~/vimfiles"
+        set runtimepath+=~/vimfiles/bundle/neobundle.vim
+    else
+        let VIM_DIR = "~/.vim"
+        set runtimepath+=~/.vim/bundle/neobundle.vim
+    endif
 endif
 
 call neobundle#begin(expand(VIM_DIR . "/bundle/"))
@@ -236,28 +231,6 @@ NeoBundleLazy 'Shougo/vimfiler', {
     \   'mappings': ['<plug>(vimfiler_switch)'],
     \   'explorer': 1
     \ }}
-"function! OpenVimFiler(mode)
-    " Windowsの場合はVimFilerを開く前に内部エンコーディングをcp932に変更する
-    " UTF-8のままだとマルチバイト文字を含むパスが扱えない
-    "if g:OSTYPE == "windows32\n" || g:OSTYPE == "MINGW32_NT-6.1\n"
-        "set encoding=cp932
-    "endif
-    "if a:mode == "single"
-        "VimFiler
-    "elseif a:mode == "double"
-        "VimFilerDouble
-    "endif
-"endfunction
-"function! CloseVimFiler()
-    " Windowsの場合はVimFilerを閉じる前に内部エンコーディングをUTF-8に戻す
-    "if g:OSTYPE == "windows32\n" || g:OSTYPE == "MINGW32_NT-6.1\n"
-        "set encoding=utf-8
-    "endif
-    "execute "normal \<Plug>(vimfiler_exit)"
-"endfunction
-
-"nnoremap <Space>f :<C-u>call OpenVimFiler("single")<CR>
-"nnoremap <Space>d :<C-u>call OpenVimFiler("double")<CR>
 nnoremap <Space>f :<C-u>VimFiler<CR>
 nnoremap <Space>d :<C-u>VimFilerDouble<CR>
 let s:hooks = neobundle#get_hooks('vimfiler')
@@ -268,10 +241,7 @@ function! s:hooks.on_source(bundle)
     function! s:vimfiler_settings()
         nmap <buffer> R <Plug>(vimfiler_redraw_screen)
         nmap <buffer> <C-l> <C-w>l
-        "nmap <buffer> Q :call CloseVimFiler()<CR>
-        "nmap <buffer> q :call CloseVimFiler()<CR>
-        "nmap <buffer> Q q
-        "autocmd MyAutoCmd BufLeave <buffer> :call CloseVimFiler()
+        nmap <buffer> q Q
     endfunction
 endfunction
 
@@ -354,11 +324,16 @@ endfunction
 NeoBundle 'thinca/vim-quickrun'
 let s:hooks = neobundle#get_hooks('vim-quickrun')
 function! s:hooks.on_source(bundle)
-    "let g:quickrun_config = {
-    "    \ '*': {'runner': 'vimproc',
-    "    \       'hook/output_encode': 1,
-    "    \       'hook/output_encode/encoding': 'cp932'},
-    "    \ }
+    if has('win32') || has('win64')
+        let l:ENCODE = 'utf-8:cp932'
+    else
+        let l:ENCODE = 'utf-8'
+    endif
+    let g:quickrun_config = {
+        \ '_': {'runner': 'system',
+        \       'hook/output_encode': 1,
+        \       'hook/output_encode/encoding': l:ENCODE}
+        \ }
     set splitbelow
     set splitright
     nnoremap <Space>r :QuickRun<CR>
