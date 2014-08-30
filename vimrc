@@ -71,8 +71,10 @@ set number
 "set wrap
 "set list
 "set listchars=tab:≫\ ,eol:?
-set t_vb=
-set novisualbell
+"set t_vb=
+"set novisualbell
+set noerrorbells
+set visualbell t_vb=
 
 "===================
 " Cursor
