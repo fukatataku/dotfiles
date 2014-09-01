@@ -73,7 +73,6 @@ set number
 "set listchars=tab:≫\ ,eol:?
 "set t_vb=
 "set novisualbell
-set noerrorbells
 set visualbell t_vb=
 
 "===================
