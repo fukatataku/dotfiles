@@ -194,6 +194,7 @@ NeoBundle 'Shougo/vimproc', {
 "===================
 " unite
 "===================
+NeoBundle 'Shougo/neomru.vim'
 NeoBundleLazy 'Shougo/unite.vim', {
     \ 'autoload': {
     \   'commands': ['Unite', 'UniteWithBufferDir']
@@ -214,7 +215,6 @@ function! s:hooks.on_source(bundle)
     call unite#custom_default_action("source/bookmark/directory", "vimfiler")
     call unite#custom_default_action("directory", "vimfiler")
     call unite#custom_default_action("directory_mru", "vimfiler")
-    NeoBundle 'Shougo/neomru.vim'
 endfunction
 
 "===================
