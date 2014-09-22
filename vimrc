@@ -355,21 +355,21 @@ NeoBundleLazy 'jmcantrell/vim-virtualenv', {
 "===================
 " jedi
 "===================
-NeoBundleLazy 'davidhalter/jedi-vim', {
-    \ "autoload": {
-    \   "filetypes": ["python", "python3", "djangohtml"],
-    \ },
-    \ "build": {
-    \   "cygwin": "pip install jedi",
-    \   "mac": "pip install jedi",
-    \   "unix": "pip install jedi",
-    \ }}
-let s:hooks = neobundle#get_hooks("jedi-vim")
-function! s:hooks.on_source(bundle)
-    setlocal omnifunc=jedi#completions
-    let g:jedi#completions_enabled = 0
-    let g:jedi#auto_vim_configuration = 0
-endfunction
+"NeoBundleLazy 'davidhalter/jedi-vim', {
+"    \ "autoload": {
+"    \   "filetypes": ["python", "python3", "djangohtml"],
+"    \ },
+"    \ "build": {
+"    \   "cygwin": "pip install jedi",
+"    \   "mac": "pip install jedi",
+"    \   "unix": "pip install jedi",
+"    \ }}
+"let s:hooks = neobundle#get_hooks("jedi-vim")
+"function! s:hooks.on_source(bundle)
+"    setlocal omnifunc=jedi#completions
+"    let g:jedi#completions_enabled = 0
+"    let g:jedi#auto_vim_configuration = 0
+"endfunction
 
 "==============================================================================
 " NeoBundle END
