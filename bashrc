@@ -32,6 +32,6 @@ export PS1='$ '
 export TERM=xterm-256color
 
 # 各PC固有の設定
-if [ -e ~/.bash_profile.local ]; then
-  source ~/.bash_profile.local
+if [ -e ~/.bashrc.local ]; then
+  source ~/.bashrc.local
 fi

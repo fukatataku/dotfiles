@@ -264,7 +264,7 @@ if has('lua') && v:version >= 704
     let g:neocomplete#enable_at_startup = 1
     let s:hooks = neobundle#get_hooks('neocomplete.vim')
     function! s:hooks.on_source(bundle)
-        let g:acp_enableAtStartup = 0
+        "let g:acp_enableAtStartup = 0
         let g:neocomplete#enable_smart_case = 1
         "let g:neocomplete#force_omni_input_patterns = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
     endfunction
