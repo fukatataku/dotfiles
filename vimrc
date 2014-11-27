@@ -39,6 +39,8 @@ set expandtab
 " Key Mapping
 "===================
 inoremap <C-@> <Esc>
+vnoremap <C-@> <Esc>
+
 nnoremap j gj
 nnoremap k gk
 
@@ -62,6 +64,9 @@ nnoremap <S-Left> <C-w><
 nnoremap <S-Right> <C-w>>
 nnoremap <S-Up> <C-w>-
 nnoremap <S-Down> <C-w>+
+
+nnoremap <C-s>h :<C-u>sp<CR>
+nnoremap <C-s>v :<C-u>vs<CR>
 
 "==============================================================================
 " Display Settings
