@@ -16,10 +16,10 @@ elif [ `uname` = "Linux" -o `uname` = "CYGWIN_NT-6.1" ]; then
 
 elif [ `uname` = "MINGW32_NT-6.1" -o `uname` = "MINGW32_NT-5.1" ]; then
 # MinGW
-  alias ls='ls --color'
-  alias la='ls -a --color'
-  alias ll='ls -l --color'
-  alias lla='ls -la --color'
+  alias ls='ls --color --show-control-char'
+  alias la='ls -a --color --show-control-char'
+  alias ll='ls -l --color --show-control-char'
+  alias lla='ls -la --color --show-control-char'
   export LS_COLORS="no=00:fi=00:di=01;36:ln=01;34"
   export TERM=msys
 

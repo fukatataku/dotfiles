@@ -53,3 +53,9 @@ fi
 # ・vimのバージョンが7.3.885以上
 # ・vimがlua対応をしている
 
+# python設定の補足
+# syntasticでpythonコードのチェックを行うには、以下が必要かもしれない
+# ・pep8がインストールされている
+#   $ pip install pep8
+# ・pyflakesがインストールされている
+#   $ pip install pyflakes
