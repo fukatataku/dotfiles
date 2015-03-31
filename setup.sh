@@ -39,6 +39,7 @@ ln -sf $HERE/bash_profile ~/.bash_profile
 ln -sf $HERE/inputrc ~/.inputrc
 ln -sf $HERE/vimrc $VIM_DIR/vimrc
 ln -sf $HERE/gvimrc $VIM_DIR/gvimrc
+ln -sf $HERE/indent $VIM_DIR/indent
 
 if [ ! -e $VIM_DIR/bundle/neobundle.vim ]; then
     git clone https://github.com/Shougo/neobundle.vim $VIM_DIR/bundle/neobundle.vim
