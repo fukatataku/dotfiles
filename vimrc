@@ -68,6 +68,12 @@ nnoremap <S-Down> <C-w>+
 nnoremap <C-s>h :<C-u>sp<CR>
 nnoremap <C-s>v :<C-u>vs<CR>
 
+" vimgrep 時の移動
+nnoremap <S-Right> :cprevious<CR>
+nnoremap <S-Left> :cnext<CR>
+"nnoremap :<C-u>cfirst<CR>
+"nnoremap :<C-u>clast<CR>
+
 "==============================================================================
 " Display Settings
 "==============================================================================
@@ -247,7 +253,7 @@ function! s:hooks.on_source(bundle)
     function! s:vimfiler_settings()
         nmap <buffer> R <Plug>(vimfiler_redraw_screen)
         nmap <buffer> <C-l> <C-w>l
-        nmap <buffer> q Q
+        "nmap <buffer> q Q
     endfunction
 endfunction
 
