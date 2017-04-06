@@ -38,11 +38,14 @@ set expandtab
 "===================
 " Key Mapping
 "===================
-inoremap <C-@> <Esc>
-vnoremap <C-@> <Esc>
+inoremap <C-j> <Esc>
+vnoremap <C-j> <Esc>
 
 nnoremap j gj
 nnoremap k gk
+
+nnoremap <S-h> ^
+nnoremap <S-l> $
 
 nnoremap n nzz
 nnoremap N Nzz
