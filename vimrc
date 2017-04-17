@@ -45,7 +45,9 @@ nnoremap j gj
 nnoremap k gk
 
 nnoremap <S-h> ^
+vnoremap <S-h> ^
 nnoremap <S-l> $
+vnoremap <S-l> $
 
 nnoremap n nzz
 nnoremap N Nzz
